@@ -12,7 +12,7 @@ public class Pulse : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {        
         currentTime += Time.deltaTime * pulseSpeed * 2 * Mathf.PI;
 
         float scale = Mathf.Lerp(minScale, maxScale, (Mathf.Sin(currentTime) + 1) / 2);
