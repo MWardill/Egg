@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Conductor : MonoBehaviour
 {
+    public static Conductor Instance;
+
     public float bpm;
     //public float secPerBeat => 60f / bpm;
     //public float songPositionInBeats => songPosition / secPerBeat;
@@ -15,9 +19,14 @@ public class Conductor : MonoBehaviour
     public float dspSongTime;
 
     public AudioSource musicSource;
+    public TextMeshProUGUI text;
 
-    
-    void Start()
+	private void Awake()
+	{
+        Instance = this;
+	}
+
+	void Start()
     {
 		secPerBeat = 60f / bpm;
 		musicSource = GetComponent<AudioSource>();        
@@ -30,5 +39,7 @@ public class Conductor : MonoBehaviour
         songPosition = (float)(AudioSettings.dspTime - dspSongTime);
         songPositionInBeats = songPosition / secPerBeat;
 
-	}
+        text.text = $"Beats: {(int)songPositionInBeats}";
+
+    }
 }
