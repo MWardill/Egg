@@ -12,6 +12,8 @@ public class Pulse : MonoBehaviour
     private float delta;
     private float transformValue;
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -22,5 +24,6 @@ public class Pulse : MonoBehaviour
 		
 		float scale = Mathf.Lerp(minScale, maxScale, (Mathf.Sin(transformValue) + 1) / 2);
         transform.localScale = new Vector3(scale, scale, 1f);
-    }
+
+	}
 }
